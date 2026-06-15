@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta
+      name="description"
+      content="Support page for Sudoku Zen, a calm classic Sudoku puzzle app for iPhone."
+    >
+    <title>Sudoku Zen Support</title>
+    <style>
+      :root {
+        --surface: #fbfbfa;
+        --surface-bright: #ffffff;
+        --surface-container: #f6f6f5;
+        --surface-container-high: #eeeeed;
+        --outline: #d8d8d6;
+        --outline-variant: #ececea;
+        --primary: #8fd643;
+        --primary-container: #a9e765;
+        --primary-fixed: #dff7c6;
+        --tertiary-container: #eef9e4;
+        --text-primary: #090909;
+        --text-secondary: #5f5f5c;
+        --text-disabled: #9a9a96;
+        --error: #d63031;
+        --shadow: 0 12px 40px rgba(9, 9, 9, 0.06);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--surface);
+        color: var(--text-primary);
+        font-family: Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .page::before {
+        background:
+          linear-gradient(var(--outline-variant) 1px, transparent 1px),
+          linear-gradient(90deg, var(--outline-variant) 1px, transparent 1px);
+        background-size: 42px 42px;
+        content: "";
+        inset: 0;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 58%);
+        opacity: 0.7;
+        pointer-events: none;
+        position: absolute;
+      }
+
+      .wrap {
+        margin: 0 auto;
+        max-width: 880px;
+        padding: 24px;
+        position: relative;
+        width: 100%;
+      }
+
+      .nav {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 10px 0 32px;
+      }
+
+      .brand {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .mark {
+        align-items: center;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(9, 9, 9, 0.08);
+        display: grid;
+        flex: 0 0 auto;
+        height: 36px;
+        overflow: hidden;
+        place-items: center;
+        width: 36px;
+      }
+
+      .mark img {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+
+      .brand-title {
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        line-height: 1.15;
+        text-transform: uppercase;
+      }
+
+      .brand-title .accent {
+        color: var(--primary);
+      }
+
+      .nav-link {
+        border: 1px solid var(--outline);
+        border-radius: 999px;
+        color: var(--text-primary);
+        display: inline-flex;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1;
+        padding: 11px 14px;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .hero {
+        display: grid;
+        gap: 24px;
+        padding: 36px 0 28px;
+      }
+
+      .kicker {
+        color: var(--text-secondary);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        line-height: 16px;
+        margin: 0 0 8px;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        color: var(--text-primary);
+        font-size: clamp(38px, 11vw, 68px);
+        letter-spacing: 0;
+        line-height: 0.98;
+        margin: 0;
+        text-transform: uppercase;
+      }
+
+      .accent {
+        color: var(--primary);
+      }
+
+      .lead {
+        color: var(--text-secondary);
+        font-size: 18px;
+        line-height: 1.55;
+        margin: 16px 0 0;
+        max-width: 620px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .button {
+        align-items: center;
+        border-radius: 8px;
+        display: inline-flex;
+        font-size: 15px;
+        font-weight: 700;
+        justify-content: center;
+        min-height: 48px;
+        padding: 13px 16px;
+        text-decoration: none;
+      }
+
+      .button.primary {
+        background: var(--primary);
+        color: #050505;
+      }
+
+      .button.secondary {
+        background: var(--surface-bright);
+        border: 1px solid var(--outline);
+        color: var(--text-primary);
+      }
+
+      .section {
+        padding: 26px 0;
+      }
+
+      h2 {
+        font-size: 24px;
+        line-height: 32px;
+        margin: 0 0 16px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .panel {
+        background: var(--surface-bright);
+        border: 1px solid var(--outline-variant);
+        border-radius: 12px;
+        padding: 18px;
+      }
+
+      .panel h3 {
+        font-size: 17px;
+        line-height: 24px;
+        margin: 0 0 6px;
+      }
+
+      .panel p {
+        color: var(--text-secondary);
+        font-size: 15px;
+        line-height: 1.55;
+        margin: 0;
+      }
+
+      .list {
+        color: var(--text-secondary);
+        display: grid;
+        font-size: 15px;
+        gap: 10px;
+        line-height: 1.55;
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .contact {
+        background: var(--tertiary-container);
+        border-color: var(--primary-fixed);
+      }
+
+      .contact a {
+        font-weight: 700;
+      }
+
+      footer {
+        color: var(--text-disabled);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        padding: 28px 0 16px;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      @media (min-width: 760px) {
+        .wrap {
+          padding: 32px;
+        }
+
+        .hero {
+          padding-top: 58px;
+        }
+
+        .grid.two {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 430px) {
+        .wrap {
+          padding: 20px;
+        }
+
+        .nav {
+          padding-bottom: 20px;
+        }
+
+        .brand-title {
+          font-size: 13px;
+        }
+
+        .nav-link {
+          padding: 10px 12px;
+        }
+
+        .actions {
+          display: grid;
+        }
+
+        .button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="wrap">
+        <nav class="nav" aria-label="Support navigation">
+          <div class="brand">
+            <div class="mark" aria-hidden="true">
+              <img src="assets/sudoku-zen-icon.png" alt="">
+            </div>
+            <div class="brand-title">Sudoku <span class="accent">Zen</span></div>
+          </div>
+          <a class="nav-link" href="#contact">Contact Support</a>
+        </nav>
+
+        <section class="hero" aria-labelledby="page-title">
+          <div>
+            <p class="kicker">Support</p>
+            <h1 id="page-title">Sudoku <span class="accent">Zen</span></h1>
+            <p class="lead">
+              Need help with Sudoku Zen? Find quick answers for the classic puzzle app,
+              restore a calm solving session, or contact support directly.
+            </p>
+            <div class="actions">
+              <a class="button primary" href="mailto:sudoku-zen@alepop.dev?subject=Sudoku%20Zen%20Support">
+                Email Support
+              </a>
+              <a class="button secondary" href="#troubleshooting">
+                Troubleshooting
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="troubleshooting" aria-labelledby="troubleshooting-title">
+          <h2 id="troubleshooting-title">Troubleshooting</h2>
+          <div class="grid two">
+            <article class="panel">
+              <h3>My current puzzle disappeared</h3>
+              <p>
+                Start a new puzzle only when you are ready to replace the current one.
+                If you left the app during a puzzle, open Sudoku Zen again and use Resume
+                when it is available on the home screen.
+              </p>
+            </article>
+            <article class="panel">
+              <h3>Hints or notes are confusing</h3>
+              <p>
+                Use Notes to mark possible numbers before committing an answer. The hint
+                button first highlights a helpful cell, then reveals the correct value
+                when used again.
+              </p>
+            </article>
+            <article class="panel">
+              <h3>Sound or vibration feedback</h3>
+              <p>
+                Haptic feedback can be managed from Settings inside the app. Device-level
+                vibration settings may also affect how feedback feels.
+              </p>
+            </article>
+            <article class="panel">
+              <h3>Ads or privacy choices</h3>
+              <p>
+                If privacy options are required in your region, they are available from
+                Settings. You can also contact support for privacy-related questions.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="faq-title">
+          <h2 id="faq-title">FAQ</h2>
+          <div class="grid">
+            <article class="panel">
+              <h3>What difficulty levels are available?</h3>
+              <p>Sudoku Zen includes Easy, Medium, Hard, and Expert puzzles.</p>
+            </article>
+            <article class="panel">
+              <h3>Does Sudoku Zen track progress?</h3>
+              <p>
+                Yes. Completed games are shown in the dashboard with your finished
+                puzzles, best times, and best scores by difficulty.
+              </p>
+            </article>
+            <article class="panel">
+              <h3>What should I include in a support email?</h3>
+              <p>
+                Include your device model, iOS version, app version, and a short
+                description of what happened. Screenshots are helpful when possible.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="contact" aria-labelledby="contact-title">
+          <div class="panel contact">
+            <p class="kicker">Contact</p>
+            <h2 id="contact-title">Email Support</h2>
+            <p>
+              For help with Sudoku Zen, send a message to
+              <a href="mailto:sudoku-zen@alepop.dev?subject=Sudoku%20Zen%20Support">sudoku-zen@alepop.dev</a>.
+            </p>
+          </div>
+        </section>
+
+        <footer>
+          Sudoku Zen Support
+        </footer>
+      </div>
+    </main>
+  </body>
+</html>
